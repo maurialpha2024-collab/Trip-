@@ -23,22 +23,13 @@ import { StepReview } from "./steps/step-review";
 import { StepSmallFamily } from "./steps/step-small-family";
 import {
   emptyPerson,
+  stepKeys,
   toPersonInput,
   type LargeFamilyOption,
   type PersonDraft,
   type WizardDraft,
 } from "./types";
 import { backupKey, useOfflineBackup } from "./use-offline-backup";
-
-const stepKeys = [
-  "largeFamily",
-  "smallFamily",
-  "household",
-  "father",
-  "mother",
-  "children",
-  "review",
-] as const;
 
 type WizardProps = {
   families: LargeFamilyOption[];

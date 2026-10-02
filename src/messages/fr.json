@@ -1,6 +1,7 @@
 {
   "app": {
-    "name": "Recensement des familles"
+    "name": "Recensement des familles",
+    "logoAlt": "Logo de « خيرية الشيخ سيد احمد بن موسى السملالي »"
   },
   "common": {
     "edit": "Modifier",
@@ -17,7 +18,8 @@
     "families": "Familles",
     "staff": "Personnel",
     "export": "Export",
-    "mine": "Mes ménages"
+    "mine": "Mes ménages",
+    "label": "Navigation"
   },
   "topBar": {
     "search": "Rechercher un ménage…",
@@ -46,9 +48,7 @@
     "invalid": "Nom d'utilisateur ou mot de passe incorrect.",
     "inactive": "Ce compte est désactivé. Contactez l'administrateur.",
     "locked": "Trop de tentatives. Réessayez dans 15 minutes.",
-    "footer": "Ce système est réservé à l'équipe de recensement.",
-    "tagline": "Recensez chaque famille, préservez la lignée."
-  },
+    "footer": "Ce système est réservé à l'équipe de recensement."  },
   "mfa": {
     "setupTitle": "Activer la vérification en deux étapes",
     "setupHelp": "Scannez le code avec votre application d'authentification, puis saisissez le code à 6 chiffres.",
@@ -66,7 +66,7 @@
   },
   "register": {
     "title": "Enregistrer un nouveau ménage",
-    "stepOf": "Étape {step} sur 7 — {name}",
+    "stepOf": "Étape {step} sur 7 : {name}",
     "back": "Précédent",
     "next": "Suivant : {name}",
     "search": "Rechercher…",
@@ -319,7 +319,10 @@
     "search": "Rechercher par nom de famille",
     "empty": "Vous n’avez encore enregistré aucun ménage.",
     "registerFirst": "Enregistrer le premier ménage",
-    "draftStep": "Brouillon — étape {step} sur 7",
+    "draftsTitle": "À terminer",
+    "stoppedAt": "Étape {step} sur 7 : {name}",
+    "doneTitle": "Ménages terminés",
+    "doneEmpty": "Aucun ménage terminé pour l’instant.",
     "people": "{count} personnes",
     "continue": "Continuer"
   }

@@ -1,12 +1,11 @@
-// Top bar: household search, language and theme switches, and the user menu.
-// On phones it also carries the ☰ button that opens the admin navigation.
+// Top bar: the admin's household search or the agent's two tabs, then the
+// language and theme switches and the user menu. On phones it also carries the
+// ☰ button that opens the admin navigation.
 
 "use client";
 
-import { LogOutIcon, MoonIcon, SearchIcon, SunIcon, UserIcon } from "lucide-react";
+import { LogOutIcon, MoonIcon, SunIcon, UserIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
-import { useState, type FormEvent } from "react";
 import { setLocale, setTheme, signOut } from "@/app/(app)/actions";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,9 +16,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import type { Locale } from "@/i18n/locale";
 import type { Theme } from "@/lib/preferences";
+import { cn } from "@/lib/utils";
+import { AdminSearch } from "./AdminSearch";
+import { AgentTabs } from "./AgentTabs";
 import { MobileMenuSheet } from "./MobileNav";
 import type { NavRole } from "./NavItems";
 
@@ -32,21 +33,10 @@ type TopBarProps = {
 
 export function TopBar({ role, fullName, locale, theme }: TopBarProps) {
   const t = useTranslations();
-  const router = useRouter();
-  const [query, setQuery] = useState("");
-
   const roleLabel = role === "admin" ? t("roles.admin") : t("roles.agent");
 
-  function search(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const trimmed = query.trim();
-    router.push(
-      trimmed ? `/households?q=${encodeURIComponent(trimmed)}` : "/households"
-    );
-  }
-
   return (
-    <header className="border-line bg-surface flex h-14 shrink-0 items-center gap-2 border-b px-4 print:hidden">
+    <header className="border-line bg-surface flex h-14 shrink-0 items-center gap-2 border-b px-4 lg:px-8 print:hidden">
       {role === "admin" ? (
         <MobileMenuSheet
           role={role}
@@ -56,29 +46,24 @@ export function TopBar({ role, fullName, locale, theme }: TopBarProps) {
         />
       ) : null}
 
-      <span className="text-title-family text-ink truncate lg:hidden">
+      {/* Agents have no sidebar, so the name stays here on every screen. */}
+      <span
+        className={cn(
+          "text-title-family text-ink truncate",
+          role === "admin" && "lg:hidden"
+        )}
+      >
         {t("app.name")}
       </span>
 
-      <form onSubmit={search} className="hidden flex-1 lg:block">
-        <label htmlFor="household-search" className="sr-only">
-          {t("topBar.search")}
-        </label>
-        <div className="relative max-w-md">
-          <SearchIcon
-            className="text-ink-muted pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2"
-            aria-hidden="true"
-          />
-          <Input
-            id="household-search"
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={t("topBar.search")}
-            className="ps-9"
-          />
-        </div>
-      </form>
+      {role === "agent" ? (
+        <>
+          <span aria-hidden="true" className="bg-line mx-3 hidden h-6 w-px lg:block" />
+          <AgentTabs />
+        </>
+      ) : (
+        <AdminSearch />
+      )}
 
       <div className="ms-auto flex items-center gap-1">
         <form

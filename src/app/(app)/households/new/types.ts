@@ -6,6 +6,18 @@
 import type { BirthDate } from "@/components/census/birth-date-input";
 import type { PersonRole } from "./actions";
 
+// The seven steps in order; each key names its label under "steps" in the
+// message files. Step n is stepKeys[n - 1].
+export const stepKeys = [
+  "largeFamily",
+  "smallFamily",
+  "household",
+  "father",
+  "mother",
+  "children",
+  "review",
+] as const;
+
 export type PersonDraft = {
   // null until the row exists in the database.
   id: string | null;

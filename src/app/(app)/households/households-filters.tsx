@@ -28,11 +28,13 @@ export type FilterFamily = {
 
 type FiltersProps = {
   // null hides the family and wilaya filters: an agent only needs to search
-  // their own list and filter it by status.
+  // their own list.
   largeFamilies: FilterFamily[] | null;
   agents: { id: string; fullName: string }[] | null;
   locale: Locale;
   searchPlaceholder?: string;
+  // أسرتي already splits drafts from finished households, so it hides this.
+  showStatus?: boolean;
 };
 
 export function HouseholdsFilters({
@@ -40,6 +42,7 @@ export function HouseholdsFilters({
   agents,
   locale,
   searchPlaceholder,
+  showStatus = true,
 }: FiltersProps) {
   const t = useTranslations("list");
   const tStatus = useTranslations("status");
@@ -145,16 +148,18 @@ export function HouseholdsFilters({
           </>
         ) : null}
 
-        <FilterSelect
-          label={t("status")}
-          value={searchParams.get("status") ?? ""}
-          onChange={(value) => setParam("status", value)}
-          allLabel={t("all")}
-          options={[
-            { key: "complete", label: tStatus("complete") },
-            { key: "draft", label: tStatus("draft") },
-          ]}
-        />
+        {showStatus ? (
+          <FilterSelect
+            label={t("status")}
+            value={searchParams.get("status") ?? ""}
+            onChange={(value) => setParam("status", value)}
+            allLabel={t("all")}
+            options={[
+              { key: "complete", label: tStatus("complete") },
+              { key: "draft", label: tStatus("draft") },
+            ]}
+          />
+        ) : null}
 
         {agents ? (
           <FilterSelect

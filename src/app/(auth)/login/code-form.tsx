@@ -3,53 +3,61 @@
 
 "use client";
 
-import { AlertCircleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
+import { FormAlert } from "@/components/census/form-alert";
 import { FormField } from "@/components/census/form-field";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { AuthSubmit } from "./auth-submit";
 import { verifyCode, type MfaState } from "./mfa-actions";
 
 export function CodeForm({ factorId }: { factorId: string }) {
   const t = useTranslations("mfa");
+  // Counts submissions so a wrong code shakes the alert every time.
+  const [attempt, setAttempt] = useState(0);
   const [state, formAction, pending] = useActionState<MfaState, FormData>(
     verifyCode,
     null
   );
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form
+      action={formAction}
+      onSubmit={() => setAttempt((count) => count + 1)}
+      className="space-y-5"
+    >
       <input type="hidden" name="factorId" value={factorId} />
 
-      <FormField label={t("code")}>
-        {(control) => (
-          <Input
-            {...control}
-            name="code"
-            inputMode="numeric"
-            autoComplete="one-time-code"
-            maxLength={6}
-            required
-            autoFocus
-            className="text-center tracking-[0.4em]"
-          />
-        )}
-      </FormField>
+      <div className="animate-rise [animation-delay:250ms]">
+        <FormField label={t("code")}>
+          {(control) => (
+            <Input
+              {...control}
+              name="code"
+              inputMode="numeric"
+              autoComplete="one-time-code"
+              maxLength={6}
+              required
+              autoFocus
+              dir="ltr"
+              className="bg-surface h-14 text-center font-mono text-2xl tracking-[0.5em]"
+            />
+          )}
+        </FormField>
+      </div>
 
       {state ? (
-        <p
-          role="alert"
-          className="text-small text-danger flex items-center gap-1.5 text-start"
-        >
-          <AlertCircleIcon className="size-4 shrink-0" aria-hidden="true" />
-          {t("invalid")}
-        </p>
+        <div key={attempt} className="animate-shake">
+          <FormAlert message={t("invalid")} />
+        </div>
       ) : null}
 
-      <Button type="submit" loading={pending} className="w-full">
-        {pending ? t("verifying") : t("submit")}
-      </Button>
+      <AuthSubmit
+        pending={pending}
+        label={t("submit")}
+        pendingLabel={t("verifying")}
+        className="animate-rise [animation-delay:350ms]"
+      />
     </form>
   );
 }

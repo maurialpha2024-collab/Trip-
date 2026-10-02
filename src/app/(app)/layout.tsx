@@ -1,5 +1,6 @@
-// The frame around every signed-in page: sidebar on the outer edge, top bar
-// above it, and a bottom bar on phones for agents.
+// The frame around every signed-in page. Admins get the sidebar on the outer
+// edge; agents, who have only two pages, get them as top-bar tabs on desktop
+// and a bottom bar on phones.
 
 import { cookies } from "next/headers";
 import { getLocale } from "next-intl/server";
@@ -45,7 +46,9 @@ export default async function AppLayout({
       <SessionTimer />
       <Toaster position="top-center" />
 
-      <Sidebar role={role} fullName={profile.full_name} state={sidebarState} />
+      {isAgent ? null : (
+        <Sidebar role={role} fullName={profile.full_name} state={sidebarState} />
+      )}
 
       <div className="flex min-w-0 flex-1 flex-col">
         <TopBar
@@ -62,9 +65,7 @@ export default async function AppLayout({
         </main>
       </div>
 
-      {isAgent ? (
-        <MobileBottomNav role={role} />
-      ) : null}
+      {isAgent ? <MobileBottomNav role={role} /> : null}
     </div>
   );
 }

@@ -1,9 +1,11 @@
-// Search box plus big tappable rows, shared by the large-family and
-// small-family steps. Rows are at least 56px so they are easy to hit with a
-// thumb, and the search folds Arabic spelling differences.
+// Search box plus big tappable tiles, shared by the large-family and
+// small-family steps. Tiles are at least 64px so they are easy to hit with a
+// thumb, sit two across from tablet width up, and the search folds Arabic
+// spelling differences.
 
 "use client";
 
+import { CheckIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -51,27 +53,43 @@ export function SelectableList({
         />
       </div>
 
-      <ul className="space-y-2">
-        {visible.map((item) => (
-          <li key={item.id}>
-            <button
-              type="button"
-              onClick={() => onSelect(item.id)}
-              aria-pressed={selectedId === item.id}
-              className={cn(
-                "rounded-card border-line bg-surface flex min-h-14 w-full flex-col justify-center gap-0.5 border px-4 py-3 text-start transition-colors",
-                selectedId === item.id
-                  ? "border-indigo bg-indigo-soft"
-                  : "hover:border-indigo/40"
-              )}
-            >
-              <span className="text-title-family text-ink">{item.name}</span>
-              {item.detail ? (
-                <span className="text-small text-ink-muted">{item.detail}</span>
-              ) : null}
-            </button>
-          </li>
-        ))}
+      <ul className="grid gap-2 sm:grid-cols-2">
+        {visible.map((item) => {
+          const isSelected = selectedId === item.id;
+
+          return (
+            <li key={item.id}>
+              <button
+                type="button"
+                onClick={() => onSelect(item.id)}
+                aria-pressed={isSelected}
+                className={cn(
+                  "rounded-card border-line bg-surface flex min-h-16 w-full items-center justify-between gap-3 border px-4 py-3 text-start transition active:scale-[0.99]",
+                  isSelected
+                    ? "border-indigo bg-indigo-soft"
+                    : "hover:border-indigo/40 hover:bg-indigo-soft/40"
+                )}
+              >
+                <span className="flex min-w-0 flex-col gap-0.5">
+                  <span className="text-title-family text-ink truncate">
+                    {item.name}
+                  </span>
+                  {item.detail ? (
+                    <span className="text-small text-ink-muted">
+                      {item.detail}
+                    </span>
+                  ) : null}
+                </span>
+                {isSelected ? (
+                  <CheckIcon
+                    className="text-indigo size-5 shrink-0"
+                    aria-hidden="true"
+                  />
+                ) : null}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
