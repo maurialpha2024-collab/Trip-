@@ -1,0 +1,259 @@
+/* Design tokens for إحصاء الأسر: colors, fonts, type scale and focus styles.
+   shadcn's semantic variables are pointed at the census tokens so its
+   components inherit this palette instead of carrying a second one. */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Census palette */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-indigo: var(--indigo);
+  --color-indigo-deep: var(--indigo-deep);
+  --color-indigo-soft: var(--indigo-soft);
+  --color-ochre: var(--ochre);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+
+  /* --font-readex and --font-amiri come from next/font in the root layout.
+     Naming a theme key --font-amiri here would make it refer to itself. */
+  --font-sans: var(--font-readex);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-amiri);
+
+  --radius-control: 0.5rem;
+  --radius-card: 0.75rem;
+
+  /* shadcn tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --canvas: #f3f4f6;
+  --surface: #ffffff;
+  --ink: #1a2233;
+  --ink-muted: #5b6474;
+  --line: #d9dde5;
+  --indigo: #233b7a;
+  --indigo-deep: #1b2c5c;
+  --indigo-soft: #e6eaf4;
+  --ochre: #b7812a;
+  --success: #2e7d5b;
+  --warning: #9a6300;
+  --danger: #b3261e;
+  /* Dark mode flips --danger to a light red, so its text colour must flip too. */
+  --danger-foreground: #ffffff;
+
+  --radius: 0.5rem;
+
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--indigo);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface);
+  --secondary-foreground: var(--ink);
+  --muted: var(--indigo-soft);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--indigo-soft);
+  --accent-foreground: var(--indigo);
+  --destructive: var(--danger);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--indigo);
+
+  --chart-1: var(--indigo);
+  --chart-2: #4f7bc8;
+  --chart-3: #8fb0e3;
+  --chart-4: var(--ochre);
+  --chart-5: #6b7a8f;
+
+  --sidebar: var(--indigo-deep);
+  --sidebar-foreground: #e7eaf0;
+  --sidebar-primary: var(--ochre);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a3e6e;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2a3a63;
+  --sidebar-ring: var(--ochre);
+}
+
+.dark {
+  --canvas: #10141c;
+  --surface: #181d28;
+  --ink: #e7eaf0;
+  --ink-muted: #9aa3b2;
+  --line: #2a3140;
+  --indigo: #8fa6e0;
+  --indigo-deep: #0c1222;
+  --indigo-soft: #1f2a45;
+  --ochre: #d9a34a;
+  --success: #5cc096;
+  --warning: #e0b04f;
+  --danger: #f2867e;
+  --danger-foreground: #10141c;
+
+  --primary-foreground: #0c1222;
+  --sidebar: var(--indigo-deep);
+  --sidebar-foreground: #e7eaf0;
+  --sidebar-accent: #1f2a45;
+  --sidebar-border: #2a3140;
+}
+
+/* Type scale from the design system. Amiri is reserved for family names
+   and page titles; everything else is Readex Pro. */
+@utility text-title-page {
+  font-family: var(--font-amiri);
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+@utility text-title-family {
+  font-family: var(--font-amiri);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+@utility text-heading {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+@utility text-body {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+@utility text-label {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+@utility text-small {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@utility text-stat {
+  font-family: var(--font-sans);
+  font-size: 2.125rem;
+  line-height: 1.1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-canvas text-ink;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  /* One visible focus style everywhere, per the design system. */
+  :focus-visible {
+    outline: 2px solid var(--indigo);
+    outline-offset: 2px;
+  }
+
+  /* Figures must line up in census tables. */
+  th,
+  td {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* A printed household should be black on white, with no app chrome and no
+   page-breaks through the middle of a person's card. */
+@media print {
+  :root {
+    --canvas: #ffffff;
+    --surface: #ffffff;
+    --ink: #000000;
+    --ink-muted: #333333;
+    --line: #999999;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  article,
+  section {
+    break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
