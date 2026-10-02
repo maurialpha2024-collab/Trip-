@@ -1,5 +1,5 @@
 // Mauritanian leatherwork motif (triangles and diamonds), tiled as a background.
-// Used in only two places: the login side panel and the top of the sidebar.
+// Used only at the top of the admin sidebar.
 // Strokes inherit currentColor, so the caller sets the tone with text-ochre.
 
 const patternId = "census-geo-pattern";

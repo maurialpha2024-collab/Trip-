@@ -28,7 +28,7 @@ export function CodeForm({ factorId }: { factorId: string }) {
     >
       <input type="hidden" name="factorId" value={factorId} />
 
-      <div className="animate-rise [animation-delay:250ms]">
+      <div className="animate-rise [animation-delay:450ms] lg:[animation-delay:250ms]">
         <FormField label={t("code")}>
           {(control) => (
             <Input
@@ -56,7 +56,7 @@ export function CodeForm({ factorId }: { factorId: string }) {
         pending={pending}
         label={t("submit")}
         pendingLabel={t("verifying")}
-        className="animate-rise [animation-delay:350ms]"
+        className="animate-rise [animation-delay:550ms] lg:[animation-delay:350ms]"
       />
     </form>
   );

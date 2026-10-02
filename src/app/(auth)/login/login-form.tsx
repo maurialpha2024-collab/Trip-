@@ -30,7 +30,7 @@ export function LoginForm() {
       onSubmit={() => setAttempt((count) => count + 1)}
       className="space-y-5"
     >
-      <div className="animate-rise [animation-delay:250ms]">
+      <div className="animate-rise [animation-delay:450ms] lg:[animation-delay:250ms]">
         <FormField label={t("username")}>
           {(control) => (
             <Input
@@ -39,7 +39,6 @@ export function LoginForm() {
               autoComplete="username"
               autoCapitalize="none"
               spellCheck={false}
-              autoFocus
               required
               className="bg-surface h-12 text-base"
             />
@@ -47,7 +46,7 @@ export function LoginForm() {
         </FormField>
       </div>
 
-      <div className="animate-rise [animation-delay:350ms]">
+      <div className="animate-rise [animation-delay:550ms] lg:[animation-delay:350ms]">
         <FormField label={t("password")}>
           {(control) => (
             <div className="relative">
@@ -95,7 +94,7 @@ export function LoginForm() {
         pending={pending}
         label={t("submit")}
         pendingLabel={t("signingIn")}
-        className="animate-rise [animation-delay:450ms]"
+        className="animate-rise [animation-delay:650ms] lg:[animation-delay:450ms]"
       />
     </form>
   );
