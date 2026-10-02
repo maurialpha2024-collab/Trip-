@@ -30,9 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files — .env.example is the committed template, real secrets never are
+# env files: real secrets never go to GitHub, and the owner keeps the
+# .env.example template on this computer only
 .env*
-!.env.example
 
 # vercel
 .vercel
@@ -41,6 +41,10 @@ yarn-error.log*
 .agents/
 skills-lock.json
 supabase/.temp/
+
+# project notes the owner keeps off GitHub
+CLAUDE.md
+census-kit/
 
 # typescript
 *.tsbuildinfo
