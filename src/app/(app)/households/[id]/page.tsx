@@ -68,7 +68,7 @@ export default async function HouseholdPage({ params }: PageProps) {
     wilayas.find((item) => item.key === household.wilaya)?.[locale] ?? null;
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-rise space-y-6">
       <div className="space-y-2">
         <p className="text-small text-ink-muted text-start">
           {largeFamily?.name} <span className="text-ochre">›</span>{" "}

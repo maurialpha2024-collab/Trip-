@@ -29,14 +29,14 @@ export async function MyDrafts({ rows, total }: MyDraftsProps) {
         </span>
       </h2>
 
-      <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <ul className="stagger-rise grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {rows.map((row) => {
           const step = Math.min(Math.max(row.last_step ?? 3, 1), 7);
 
           return (
             <li
               key={row.id}
-              className="rounded-card border-line bg-surface border-s-ochre flex flex-col gap-4 border border-s-4 p-4"
+              className="rounded-card border-line bg-surface border-s-ochre flex flex-col gap-4 border border-s-4 p-4 transition-[translate,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_-20px_var(--indigo)]"
             >
               <div className="min-w-0 space-y-1 text-start">
                 <p className="text-title-family text-ink truncate">

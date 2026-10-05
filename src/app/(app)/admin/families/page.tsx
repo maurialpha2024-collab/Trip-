@@ -46,7 +46,7 @@ export default async function AdminFamiliesPage() {
   }));
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-rise space-y-6">
       <PageHeader
         title={t("nav.families")}
         description={t("families.summary", {

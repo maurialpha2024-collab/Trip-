@@ -119,7 +119,7 @@ export function FamilyTree({
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="stagger-rise grid gap-4 sm:grid-cols-2">
         {father ? card(father, 0, false) : null}
         {mothers.map((mother, index) => (
           <div key={mother.id ?? `mother-${index}`}>
@@ -138,7 +138,7 @@ export function FamilyTree({
                 </h3>
               ) : null}
 
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="stagger-rise grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {group.items.map((child, index) => (
                   <div key={child.id ?? `child-${index}`}>
                     {card(child, 10 + index, true)}

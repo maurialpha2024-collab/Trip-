@@ -9,7 +9,8 @@
     "cancel": "Annuler",
     "save": "Enregistrer",
     "saving": "Enregistrement…",
-    "soon": "Bientôt"
+    "soon": "Bientôt",
+    "loading": "Chargement…"
   },
   "nav": {
     "dashboard": "Tableau de bord",

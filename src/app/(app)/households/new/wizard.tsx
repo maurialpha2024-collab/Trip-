@@ -202,7 +202,7 @@ export function Wizard({
   return (
     <div className="flex flex-col gap-6">
       <div className="min-w-0 flex-1 space-y-5">
-        <header className="space-y-1">
+        <header className="animate-rise space-y-1">
           <h1 className="text-title-page text-ink text-start">
             {t("register.title")}
           </h1>
@@ -226,7 +226,12 @@ export function Wizard({
           </p>
         ) : null}
 
-        <div className="rounded-card border-line bg-surface max-w-[720px] border p-4 sm:p-6">
+        {/* Keyed by step, so each step is a fresh element and rises in when
+            the agent moves forward or back. */}
+        <div
+          key={step}
+          className="animate-rise rounded-card border-line bg-surface max-w-[720px] border p-4 sm:p-6"
+        >
           <StepBody
             step={step}
             draft={draft}
@@ -239,7 +244,10 @@ export function Wizard({
         </div>
 
         {error ? (
-          <p role="alert" className="text-small text-danger text-start">
+          <p
+            role="alert"
+            className="animate-shake text-small text-danger text-start"
+          >
             {error}
           </p>
         ) : null}

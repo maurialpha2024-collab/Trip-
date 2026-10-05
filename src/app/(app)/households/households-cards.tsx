@@ -15,12 +15,12 @@ export async function HouseholdsCards({ rows, locale }: CardsProps) {
   const t = await getTranslations("list");
 
   return (
-    <ul className="space-y-2 lg:hidden">
+    <ul className="stagger-rise space-y-2 lg:hidden">
       {rows.map((row) => (
         <li key={row.id}>
           <Link
             href={`/households/${row.id}`}
-            className="rounded-card border-line bg-surface block border p-4 text-start"
+            className="rounded-card border-line bg-surface hover:border-indigo/40 block border p-4 text-start transition active:scale-[0.99]"
           >
             <div className="flex items-start justify-between gap-2">
               <span className="text-title-family text-ink">

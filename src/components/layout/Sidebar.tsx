@@ -151,7 +151,7 @@ function SidebarLink({ item, label, isActive, collapsed }: SidebarLinkProps) {
       aria-current={isActive ? "page" : undefined}
       title={collapsed ? label : undefined}
       className={cn(
-        "text-label rounded-control relative flex h-11 items-center gap-3 px-3 transition-colors",
+        "text-label rounded-control relative flex h-11 items-center gap-3 px-3 transition-[color,background-color,scale] duration-200 active:scale-[0.98]",
         isActive
           ? "bg-indigo-soft text-indigo"
           : "text-white/80 hover:bg-white/10 hover:text-white",
@@ -161,7 +161,7 @@ function SidebarLink({ item, label, isActive, collapsed }: SidebarLinkProps) {
       {isActive ? (
         <span
           aria-hidden="true"
-          className="bg-ochre absolute start-0 top-1 bottom-1 w-[3px] rounded-full"
+          className="animate-in fade-in zoom-in-50 bg-ochre absolute start-0 top-1 bottom-1 w-[3px] rounded-full duration-300"
         />
       ) : null}
       <Icon className="size-5 shrink-0" aria-hidden="true" />

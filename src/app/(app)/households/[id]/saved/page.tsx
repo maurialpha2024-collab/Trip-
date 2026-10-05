@@ -40,11 +40,13 @@ export default async function HouseholdSavedPage({ params }: PageProps) {
   }
 
   return (
-    <div className="mx-auto max-w-lg space-y-6 py-8 text-center">
-      <CheckCircle2Icon
-        className="text-success mx-auto size-14"
-        aria-hidden="true"
-      />
+    <div className="stagger-rise mx-auto max-w-lg space-y-6 py-8 text-center">
+      <div className="bg-success/10 mx-auto flex size-24 items-center justify-center rounded-full">
+        <CheckCircle2Icon
+          className="animate-pop text-success size-14"
+          aria-hidden="true"
+        />
+      </div>
 
       <div className="space-y-1">
         <h1 className="text-heading text-ink">{t("title")}</h1>

@@ -149,7 +149,7 @@ export function FamiliesTree({ families }: { families: TreeLargeFamily[] }) {
         </Button>
       </div>
 
-      <ul className="space-y-2">
+      <ul className="stagger-rise space-y-2">
         {visible.map((family) => {
           const isOpen = openId === family.id;
           const households = family.smallFamilies.reduce(

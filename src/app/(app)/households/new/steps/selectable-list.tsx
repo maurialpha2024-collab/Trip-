@@ -53,7 +53,7 @@ export function SelectableList({
         />
       </div>
 
-      <ul className="grid gap-2 sm:grid-cols-2">
+      <ul className="stagger-rise grid gap-2 sm:grid-cols-2">
         {visible.map((item) => {
           const isSelected = selectedId === item.id;
 

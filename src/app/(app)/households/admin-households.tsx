@@ -102,7 +102,7 @@ export async function AdminHouseholds({ params }: { params: ListParams }) {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-rise space-y-6">
       <PageHeader
         title={tNav("households")}
         description={t("count", { count: String(total) })}

@@ -23,7 +23,7 @@ export async function TotalsRow({
   const t = await getTranslations("dashboard");
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="stagger-rise grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       <StatCard
         label={t("households")}
         value={households}

@@ -42,7 +42,7 @@ export function AgentTabs() {
                 {isActive ? (
                   <span
                     aria-hidden="true"
-                    className="bg-ochre absolute inset-x-3 bottom-0 h-[3px] rounded-t-full"
+                    className="animate-sweep bg-ochre absolute inset-x-3 bottom-0 h-[3px] rounded-t-full"
                   />
                 ) : null}
               </Link>

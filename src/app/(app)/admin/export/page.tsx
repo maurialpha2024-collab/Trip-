@@ -35,7 +35,7 @@ export default async function AdminExportPage() {
   }));
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-rise space-y-6">
       <PageHeader title={tNav("export")} />
 
       <ExportForm families={families} />
@@ -48,7 +48,7 @@ export default async function AdminExportPage() {
             {t("noRecent")}
           </p>
         ) : (
-          <ul className="rounded-card border-line bg-surface divide-line divide-y border">
+          <ul className="stagger-rise rounded-card border-line bg-surface divide-line divide-y border">
             {(recent ?? []).map((entry) => {
               const details =
                 entry.details === null || typeof entry.details !== "object"

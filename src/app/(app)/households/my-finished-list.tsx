@@ -31,11 +31,11 @@ export async function MyFinishedList({ rows, total, footer }: MyFinishedListProp
           {t("doneEmpty")}
         </p>
       ) : (
-        <ul className="rounded-card border-line bg-surface divide-line divide-y overflow-hidden border">
+        <ul className="stagger-rise rounded-card border-line bg-surface divide-line divide-y overflow-hidden border">
           {rows.map((row) => (
             <li
               key={row.id}
-              className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-3"
+              className="hover:bg-indigo-soft/40 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-3 transition-colors"
             >
               <div className="min-w-0 text-start">
                 <p className="text-title-family text-ink truncate">

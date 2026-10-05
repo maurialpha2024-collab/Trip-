@@ -162,7 +162,7 @@ export function AgentsTable({ staff }: { staff: StaffRow[] }) {
         </Table>
       </div>
 
-      <ul className="space-y-2 lg:hidden">
+      <ul className="stagger-rise space-y-2 lg:hidden">
         {staff.map((row) => (
           <li
             key={row.id}
